@@ -178,7 +178,9 @@ def detect(opt):
         dt[0] += t2 - t1
 
         # Inference
+        print(ori_img.shape)
         _, pred = predictor.inference(ori_img)
+        print(pred)
         # _, flip_pred = predictor.inference(flip_img)
         t3 = time_sync()
         dt[1] += t3 - t2
