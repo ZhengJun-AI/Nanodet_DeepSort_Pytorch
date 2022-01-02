@@ -88,9 +88,10 @@ def dict2tensor(dets, w_max=None):
     for label in dets:
         for bbox in dets[label]:
             score = bbox[-1]
-            if score > opt.conf_thres and label in opt.classes:
-                x0, y0, x1, y1 = [int(i) for i in bbox[:4]]
-                all_box.append([label, x0, y0, x1, y1, score])
+            if score > opt.conf_thres:
+                if (opt.classes is None) or (label in opt.classes):
+                    x0, y0, x1, y1 = [int(i) for i in bbox[:4]]
+                    all_box.append([label, x0, y0, x1, y1, score])
     pred = torch.Tensor(all_box)[:, [1, 2, 3, 4, 5, 0]] if all_box else None
     if w_max and (pred is not None):
         pred[:, [1, 3]] = w_max - pred[:, [3, 1]]
@@ -178,9 +179,7 @@ def detect(opt):
         dt[0] += t2 - t1
 
         # Inference
-        print(ori_img.shape)
         _, pred = predictor.inference(ori_img)
-        print(pred)
         # _, flip_pred = predictor.inference(flip_img)
         t3 = time_sync()
         dt[1] += t3 - t2
