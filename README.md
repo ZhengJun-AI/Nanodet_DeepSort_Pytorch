@@ -34,7 +34,7 @@ If you already cloned and forgot to use `--recurse-submodules` you can run `git 
 
 ## Tracking sources
 
-Tracking can be run on most video formats
+Tracking can be run on most video formats (We offer an APP for utilizing mobile phone camera, see [release](https://github.com/ZhengJun-AI/Nanodet_DeepSort_Pytorch/releases/tag/v1.0))
 
 ```bash
 python nanodet_track.py/enhanced_yolo_track.py --source 0  # webcam
@@ -46,7 +46,7 @@ python nanodet_track.py/enhanced_yolo_track.py --source 0  # webcam
                                                         'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
 
 # examples
-# nanodet detection with webcam
+# nanodet detection with mobile phone camera
 python nanodet_track.py --source http://192.168.137.162:4747/mjpegfeed?1920x1080 --img 416
 
 # nanodet detection with video file
