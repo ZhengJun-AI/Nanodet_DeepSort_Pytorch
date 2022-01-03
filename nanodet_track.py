@@ -170,11 +170,11 @@ def detect(opt):
     dt, seen = [0.0, 0.0, 0.0, 0.0], 0
     for frame_idx, (path, img, im0s, vid_cap, s) in enumerate(dataset):
         t1 = time_sync()
-        w_max = img.shape[1]
         if webcam:
             w_max = img.shape[2]
         ori_img = np.transpose(img.squeeze(), (1, 2, 0))
-        flip_img = np.transpose(cv2.flip(img.squeeze(), 1), (1, 2, 0))
+        # w_max = img.shape[1]
+        # flip_img = np.transpose(cv2.flip(img.squeeze(), 1), (1, 2, 0))
         t2 = time_sync()
         dt[0] += t2 - t1
 
@@ -283,10 +283,12 @@ def detect(opt):
 
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
+    LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS, %.1fms deep sort update \
+        per image at shape {(1, 3, *imgsz)}' % t)
     if save_txt or save_vid:
-        print('Results saved to %s' % os.getcwd() + os.sep + out)
-        if platform == 'darwin':  # MacOS
-            os.system('open ' + save_path)
+        res_dir = os.getcwd() + os.sep + out
+        print('Results saved to %s' % res_dir)
+        os.system('cp %s %s' % (save_path, res_dir))
 
 
 if __name__ == '__main__':
