@@ -75,10 +75,13 @@ python nanodet_track.py --source 0 --classes 16 17  # tracks cats and dogs, only
 [Here](https://tech.amikelive.com/node-718/what-object-categories-labels-are-in-coco-dataset/) is a list of all the possible objects that a model trained on MS COCO can detect. Notice that the indexing for the classes in this repo starts at zero.
 
 
-## MOT compliant results
+## Text results
 
-Can be saved to your experiment folder `track/expN` by 
+Corresponding logs can be saved to your experiment folder `track/expN` by 
 
 ```bash
 python nanodet_track.py --source ... --save-txt
 ```
+
+![](nanodet_file\log.png)
+
