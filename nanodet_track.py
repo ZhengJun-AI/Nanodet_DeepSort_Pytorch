@@ -140,8 +140,7 @@ def detect(opt):
     # load nanodet model
     device = select_device(device)
     load_config(nanodetcfg, config_path)
-    logger = Logger(-1, use_tensorboard=False)
-    predictor = Predictor(nanodetcfg, model_path, logger, device=device)
+    predictor = Predictor(nanodetcfg, model_path, None, device=device)
 
     # Set Dataloader
     vid_path, vid_writer = None, None
@@ -252,11 +251,13 @@ def detect(opt):
                             bbox_h = output[3] - output[1]
                             # Write MOT compliant results to file
                             with open(txt_path, 'a') as f:
-                                f.write(('%g ' * 10 + '\n') % (frame_idx + 1, id, bbox_left,  # MOT format
-                                                               bbox_top, bbox_w, bbox_h, -1, -1, -1, -1))
+                                f.write(('Fram %g: (x,y,w,h):(%g,%g,%g,%g) ID:%s %g \n') %
+                                        (frame_idx, bbox_left, bbox_top, bbox_w, bbox_h, names[c], id))
 
             else:
                 deepsort.increment_ages()
+
+            LOGGER.info(f'{s}Done. Nanodet:({t3 - t2:.3f}s), DeepSort:({t5 - t4:.3f}s)')
 
             # Stream results
             im0 = annotator.result()
@@ -284,7 +285,7 @@ def detect(opt):
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
     LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS, %.1fms deep sort update \
-        per image at shape {(1, 3, *imgsz)}' % t)
+        per image' % t)
     if save_txt or save_vid:
         res_dir = os.getcwd() + os.sep + out
         print('Results saved to %s' % res_dir)
