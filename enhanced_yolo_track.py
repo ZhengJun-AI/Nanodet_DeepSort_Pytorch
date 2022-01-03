@@ -281,8 +281,8 @@ def detect(opt):
 
                             # Write MOT compliant results to file
                             with open(txt_path, 'a') as f:
-                                f.write(('%g ' * 10 + '\n') % (frame_idx + 1, id, bbox_left,  # MOT format
-                                                               bbox_top, bbox_w, bbox_h, -1, -1, -1, -1))
+                                f.write(('Frame %g: (x,y,w,h):(%g,%g,%g,%g) ID:%s %g \n') %
+                                        (frame_idx, bbox_left, bbox_top, bbox_w, bbox_h, names[c], id))
 
             else:
                 deepsort.increment_ages()

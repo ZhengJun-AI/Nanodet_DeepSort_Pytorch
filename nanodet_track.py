@@ -251,7 +251,7 @@ def detect(opt):
                             bbox_h = output[3] - output[1]
                             # Write MOT compliant results to file
                             with open(txt_path, 'a') as f:
-                                f.write(('Fram %g: (x,y,w,h):(%g,%g,%g,%g) ID:%s %g \n') %
+                                f.write(('Frame %g: (x,y,w,h):(%g,%g,%g,%g) ID:%s %g \n') %
                                         (frame_idx, bbox_left, bbox_top, bbox_w, bbox_h, names[c], id))
 
             else:
