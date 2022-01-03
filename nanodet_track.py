@@ -284,12 +284,12 @@ def detect(opt):
 
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
-    LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS, %.1fms deep sort update \
-        per image' % t)
+    LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS, %.1fms deep sort update per image' % t)
     if save_txt or save_vid:
         res_dir = os.getcwd() + os.sep + out
         print('Results saved to %s' % res_dir)
         os.system('cp %s %s' % (save_path, res_dir))
+        os.system('cp %s %s' % (txt_path, res_dir))
 
 
 if __name__ == '__main__':
