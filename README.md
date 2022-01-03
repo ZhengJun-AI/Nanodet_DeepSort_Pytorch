@@ -83,5 +83,5 @@ Corresponding logs can be saved to your experiment folder `track/expN` by
 python nanodet_track.py --source ... --save-txt
 ```
 
-![](nanodet_file/log.png)
+![log.txt](nanodet_file/log.png)
 
