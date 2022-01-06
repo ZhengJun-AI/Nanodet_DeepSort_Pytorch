@@ -1,0 +1,2 @@
+在yolov5+deepsort_distill\yd1目录下执行
+python track.py --source test.mp4 --save-vid --yolo_weights best3.pt

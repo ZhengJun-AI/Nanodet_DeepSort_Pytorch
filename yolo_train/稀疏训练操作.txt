@@ -1,0 +1,2 @@
+在yolo5_cut有压缩包中yolov5p目录下执行
+python train_sparsity.py --st --sr 0.0001 --weights yolov5s.pt --adam --epochs 100 --data voc.yaml

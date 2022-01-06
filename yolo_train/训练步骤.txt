@@ -1,0 +1,9 @@
+1. 下载VOC2007和VOC2012数据集 目录格式为dataset/VOC/images/train2012/
+2. 将yolov5_cut压缩包中的yolov5p放置在dataset目录中
+3. 在目录yolov5p下执行稀疏训练
+4. 将稀疏训练较为满意的结果放入目录 yolov5+deepsort_distill/yd1/yolov5/weights中
+5. 下载teacher模型，我们选用的是yolov5l.pt，放入目录 yolov5+deepsort_distill/yd1/yolov5/weights中
+6. 执行蒸馏操作
+7. 将蒸馏后的结果放入 yolov5+deepsort_distill/yd1目录下，执行测试操作
+
+8.可以将蒸馏后的结果在yolov5p目录下执行剪枝和fine-tune操作，但由于和deepsort结合出现问题，没有采用

@@ -1,0 +1,2 @@
+在yolov5+deepsort_distill\yd1\yolov5目录下执行
+python Distill_train.py --data VOC.yaml --teacher-weights ./weights/yolov5l.pt --weights ./weights/best.pt --batch-size 64 
