@@ -56,6 +56,16 @@ python nanodet_track.py --source pedestrian.mp4 --img 416 --class 0 2 --save-vid
 python enhanced_yolo_track.py --source 0 --yolo_model yolov5n.pt --img 640 --class 0
 ```
 
+## Text results
+
+Corresponding logs can be saved to your experiment folder `track/expN` by 
+
+```bash
+python nanodet_track.py --source ... --save-txt
+```
+
+![log.txt](nanodet_file/log.png)
+
 ## Filter tracked classes
 
 By default the tracker tracks all MS COCO classes.
@@ -75,13 +85,7 @@ python nanodet_track.py --source 0 --classes 16 17  # tracks cats and dogs, only
 [Here](https://tech.amikelive.com/node-718/what-object-categories-labels-are-in-coco-dataset/) is a list of all the possible objects that a model trained on MS COCO can detect. Notice that the indexing for the classes in this repo starts at zero.
 
 
-## Text results
+## Knowledge Distillation
 
-Corresponding logs can be saved to your experiment folder `track/expN` by 
-
-```bash
-python nanodet_track.py --source ... --save-txt
-```
-
-![log.txt](nanodet_file/log.png)
+What's more, we also perform knowledge distillation (KD) on YOLO models. You can easily reproduce our results in folder `yolo_train` by following corresponding tips in the folder.
 
