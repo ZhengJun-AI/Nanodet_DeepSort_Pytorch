@@ -85,7 +85,7 @@ python nanodet_track.py --source 0 --classes 16 17  # tracks cats and dogs, only
 [Here](https://tech.amikelive.com/node-718/what-object-categories-labels-are-in-coco-dataset/) is a list of all the possible objects that a model trained on MS COCO can detect. Notice that the indexing for the classes in this repo starts at zero.
 
 
-## Knowledge Distillation
+## Knowledge Distillation & Pruning
 
-What's more, we also perform knowledge distillation (KD) on YOLO models. You can easily reproduce our results in folder `yolo_train` by following corresponding tips in the folder.
+What's more, we also perform knowledge distillation (KD) and model pruning on YOLO models. You can easily reproduce our results in folder `yolo_train` by following corresponding tips in the folder.
 
